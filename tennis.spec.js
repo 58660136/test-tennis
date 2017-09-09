@@ -10,6 +10,9 @@ function TennisGame(){
   this.playAGetScore = () =>{
       this.playerAScore++
   }
+  this.playBGetScore = () =>{
+      this.playerBScore++
+  }
   this.echo = () => { // this.echo = function{ } (javascript verson 5)
       return `${scoreString[this.playerAScore]} - ${scoreString[this.playerBScore]}`
   }
@@ -36,11 +39,24 @@ test('Echo "Fifteen - Love" when player button[A] get first score',() => {
   // Arrange
   let app = new TennisGame()
   app.playAGetScore();
-  
+
   // Act
   let result = app.echo()
 
   // Assert
   expect(result).toBe('Fifteen - Love')
+
+})
+
+test('Echo "Love - Fifteen" when player button[B] get first score',() => {
+  // Arrange
+  let app = new TennisGame()
+  app.playBGetScore();
+
+  // Act
+  let result = app.echo()
+
+  // Assert
+  expect(result).toBe('Love - Fifteen')
 
 })
