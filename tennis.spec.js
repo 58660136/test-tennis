@@ -1,20 +1,20 @@
 
-function TennisGame(){
+function TennisGame() {
   const scoreString = ['Love', 'Fifteen', 'Thirty', 'Forthy']
   this.playerAScore = 0
   this.playerBScore = 0
   this.reset = () => {
-      this.playerAScore = 0
-      this.playerBScore = 0
+    this.playerAScore = 0
+    this.playerBScore = 0
   }
-  this.playAGetScore = () =>{
-      this.playerAScore++
+  this.playAGetScore = () => {
+    this.playerAScore++
   }
-  this.playBGetScore = () =>{
-      this.playerBScore++
-  }
+                    this.playBGetScore = () => {
+                      this.playerBScore++
+                    }
   this.echo = () => { // this.echo = function{ } (javascript verson 5)
-      return `${scoreString[this.playerAScore]} - ${scoreString[this.playerBScore]}`
+    return `${scoreString[this.playerAScore]} - ${scoreString[this.playerBScore]}`
   }
 }
 /*
@@ -22,7 +22,7 @@ test('try success test case',() => {
   expect(true).toBe(true)
 })
 */
-test('Echo "Love - Love" when game starts',() => {
+test('Echo "Love - Love" when game starts', () => {
   // Arrange
   let app = new TennisGame()
 
@@ -35,7 +35,7 @@ test('Echo "Love - Love" when game starts',() => {
 
 })
 
-test('Echo "Fifteen - Love" when player button[A] get first score',() => {
+test('Echo "Fifteen - Love" when player button[A] get first score', () => {
   // Arrange
   let app = new TennisGame()
   app.playAGetScore();
@@ -48,7 +48,7 @@ test('Echo "Fifteen - Love" when player button[A] get first score',() => {
 
 })
 
-test('Echo "Love - Fifteen" when player button[B] get first score',() => {
+test('Echo "Love - Fifteen" when player button[B] get first score', () => {
   // Arrange
   let app = new TennisGame()
   app.playBGetScore();
@@ -58,5 +58,19 @@ test('Echo "Love - Fifteen" when player button[B] get first score',() => {
 
   // Assert
   expect(result).toBe('Love - Fifteen')
+
+})
+
+test('Echo "Fifteen - Fifteen" when playerA get 1 score and playerB get 1 score', () => {
+  // Arrange
+  let app = new TennisGame()
+  app.playAGetScore();
+  app.playBGetScore();
+
+  // Act
+  let result = app.echo()
+
+  // Assert
+  expect(result).toBe('Fifteen - Fifteen')
 
 })
